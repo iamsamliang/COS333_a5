@@ -1,0 +1,32 @@
+<table>
+    <tr>
+        <th align="left">ClassId</th>
+        <th align="left">Dept</th>
+        <th align="left">Num</th>
+        <th align="left">Area</th>
+        <th align="left">Title</th>
+    </tr>
+    {% if rows|length == 0: %}
+    {% else: %}
+    {% for row in rows: %}
+    <tr>
+      <td>
+        <a href="{{'/classdetails?classid=%s'%row[0]}}">{{row[0]}}</a>
+        <!-- <a href="classdetails">{{row[0]}}</a> -->
+      </td>
+      <td>
+        {{row[1]}}
+      </td>
+      <td>
+        {{row[2]}}
+      </td>
+      <td>
+        {{row[3]}}
+      </td>
+      <td>
+        {{row[4]}}
+      </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>

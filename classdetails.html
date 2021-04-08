@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registrar's Office Class Details</title>
+</head>
+
+<body>
+  {% include 'header.html' %}
+  {% if error_msg: %}
+  <p>{{error_msg}}</p>
+  {% elif classid is none or classid == '': %}
+  <p>missing classid</p>
+  {% elif not is_int: %}
+  <p>non-integer classid</p>
+  {% elif not results: %}
+  <p>no class with classid {{classid}} exists</p>
+  {% else: %}
+  <hr>
+  <h2>Class Details (class id {{classid}})</h2>
+  <strong>Course Id: </strong> {{results['courseid']}} <br>
+  <strong>Days: </strong> {{results['days']}} <br>
+  <strong>Start time: </strong> {{results['start']}} <br>
+  <strong>End time: </strong> {{results['end']}} <br>
+  <strong>Building: </strong> {{results['building']}} <br>
+  <strong>Room: </strong> {{results['room']}} <br>
+  <hr>
+
+  <h2>Course Details (course id {{results['courseid']}})</h2>
+  {% if results['dept_num']|length == 0: %}
+  {% else: %}
+  {% for dept_num in results['dept_num']: %}
+  <strong>Dept and Number: </strong> {{dept_num}} <br>
+  {% endfor %}
+  {% endif %}
+  <strong>Area: </strong> {{results['area']}} <br>
+  <strong>Title: </strong> {{results['title']}} <br>
+  <strong>Description: </strong> {{results['desc']}} <br>
+  <strong>Prerequisites: </strong> {{results['prereq']}} <br>
+  {% if results['profs']|length == 0: %}
+  {% else: %}
+  {% for prof in results['profs']: %}
+  <strong>Professor: </strong> {{prof}} <br>
+  {% endfor %}
+  {% endif %}
+  <hr>
+
+  <p>Click here to do <a href="{{'/index?dept=%s&number=%s&area=%s&title=%s' % (prev_dept, prev_num, prev_area, prev_title)}}">another class search</a></p>
+  {% endif %}
+  {% include 'footer.html' %}
+</body>
+</html>
