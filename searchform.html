@@ -1,11 +1,23 @@
-
 <div class="container">
-<form action="index" method="get">
+   <center>
+   <div class = "row justify-content-center">
+      <form action="index" method="get">
          <!-- Keep user entered value displayed with value attribute -->
-         <td><input type="text" id= "dept_text" placeholder="Department" name="dept" value="{{dept}}"></td>
-         <td><input type="text" id= "number_text" placeholder="Number" name="number" value="{{number}}"></td>
-         <td><input type="text" id= "area_text" placeholder="Area" name="area" value="{{area}}"></td>
-         <td><input type="text" id= "title_text" placeholder="Title" name="title" value="{{title}}"></td>
-      </br>
-</form>
+         <div class="col-sm-3">
+            <input type="text" class= "form-control" id= "dept_text" placeholder="Department" name="dept" value="{{dept}}">
+         </div>
+         <div class="col-sm-3">
+            <input type="text" class= "form-control" id= "number_text" placeholder="Number" name="number" value="{{number}}">
+         </div>
+         <div class="col-sm-3">
+            <input type="text" class= "form-control" id= "area_text" placeholder="Area" name="area" value="{{area}}">
+         </div>
+         <div class="col-sm-3">
+            <input type="text" class= "form-control" id= "title_text" placeholder="Title" name="title" value="{{title}}">
+         </div>
+         <div class="col"></div>
+      </form>
+   </div>
+   </center>
+   </br>
 </div>
