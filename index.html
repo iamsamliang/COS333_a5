@@ -18,62 +18,27 @@
          <div class="row text-center">
             <h1>Registrar's Office: Class Search</h1>
          </div>
-         <div class="row">
-            <div class="col-xs-3">
+         <div class="row justify-content-center">
+            <div class="col-sm-3">
                <input type="text" class="form-control" id="department" placeholder="Department" name="dept">
             </div>
-            <div class="col-xs-3">
+            <div class="col-sm-3">
                <input type="text" class="form-control" id="number" placeholder="Number" name="num">
             </div>
-            <div class="col-xs-3">
-               <input type="text" class="form-control" id="area" placeholder="Area" name="area">
+            <div class="col-sm-3">
+               <input type="text" class="form-control" id="the_area" placeholder="Area" name="area">
             </div>
-            <div class="col-xs-3">
+            <div class="col-sm-3">
                <input type="text" class="form-control" id="the_title" placeholder="Title" name="title">
             </div>
          </div>
-         <!-- <div class="row">
-            {% include 'searchform.html' %}
-         </div> -->
+         <br>
       </div>
 
       {% if error_msg: %}
       <p>{{error_msg}}</p>
       {% else: %}
-      <div class="container">
-         <table class="table table-striped">
-            <tbody>
-               <tr>
-                  <th scope="col">ClassId</th>
-                  <th scope="col">Dept</th>
-                  <th scope="col">Num</th>
-                  <th scope="col">Area</th>
-                  <th scope="col">Title</th>
-               </tr>
-               {% for row in rows: %}
-               <tr>
-                  <td>
-                     <a href="{{'/classdetails?classid=%s'%row[0]}}" target="_blank">{{row[0]}}</a>
-                  </td>
-                  <td>
-                     {{row[1]}}
-                  </td>
-                  <td>
-                     {{row[2]}}
-                  </td>
-                  <td>
-                     {{row[3]}}
-                  </td>
-                  <td>
-                     {{row[4]}}
-                  </td>
-               </tr>
-               {% endfor %}
-            </tbody>
-         </table>
-      </div>
       <p id='results_paragraph'></p>
-      
       {% endif %}
       {% include 'footer.html' %}
 
@@ -90,10 +55,10 @@
          
          function searchResults()
          {    
-            let dept = encodeURIComponent($('#dept_text').val());
-            let number = encodeURIComponent($('#number_text').val());
-            let area = encodeURIComponent($('#area_text').val());
-            let title = encodeURIComponent($('#title_text').val());
+            let dept = encodeURIComponent($('#department').val());
+            let number = encodeURIComponent($('#number').val());
+            let area = encodeURIComponent($('#the_area').val());
+            let title = encodeURIComponent($('#the_title').val());
             let url = '/search_results?dept=' + dept + '&number=' + number + '&area=' + area + '&title=' + title;
             
             if (request != null)
@@ -110,11 +75,11 @@
 
          function setup()
          {
-            $('#dept_text').focus();
-            $('#dept_text').on('input', searchResults);
-            $('#number_text').on('input', searchResults);
-            $('#area_text').on('input', searchResults);
-            $('#title_text').on('input', searchResults);
+            $('#department').focus();
+            $('#department').on('input', searchResults);
+            $('#number').on('input', searchResults);
+            $('#the_area').on('input', searchResults);
+            $('#the_title').on('input', searchResults);
             searchResults();
          }
          
