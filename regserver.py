@@ -31,9 +31,17 @@ def index():
 
     form_args = [dept, number, area, title]
     error_msg = ""
+    try:
+        database = Database()
+        database.connect()
+        rows = database.search(form_args)
+        database.disconnect()
+    except Exception as e:
+        error_msg = e
+        rows = []
 
     html = render_template('index.html', error_msg=error_msg, dept=dept,
-                           number=number, area=area, title=title)
+                           number=number, area=area, title=title, rows=rows)
     response = make_response(html)
     response.set_cookie('prev_dept', dept)
     response.set_cookie('prev_num', number)
