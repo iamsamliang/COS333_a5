@@ -10,7 +10,11 @@
 </head>
 
 <body>
-  {% include 'header.html' %}
+  <div class="container bg-primary">
+      <center>
+        <h1>Registrar's Office: Class Details</h1>
+      </center>
+  </div>
   {% if error_msg: %}
   <p>{{error_msg}}</p>
   {% elif classid is none or classid == '': %}

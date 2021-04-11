@@ -10,12 +10,16 @@
   </head>
 
   <body>
-    {% include 'header.html' %}
+    <div class="container bg-primary">
+      <center>
+        <h1>Registrar's Office: Class Search</h1>
+        {% include 'searchform.html' %}
+      </center>
+    </div>
+
     {% if error_msg: %}
     <p>{{error_msg}}</p>
     {% else: %}
-    <h2>Class Search</h2>
-    {% include 'searchform.html' %}
     <p id='results_paragraph'></p>
     
     {% endif %}

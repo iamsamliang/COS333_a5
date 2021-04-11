@@ -31,7 +31,6 @@ def index():
 
     form_args = [dept, number, area, title]
     error_msg = ""
-    # try was here
 
     html = render_template('index.html', error_msg=error_msg, dept=dept,
                            number=number, area=area, title=title)
