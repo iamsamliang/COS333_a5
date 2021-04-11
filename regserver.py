@@ -31,6 +31,36 @@ def index():
 
     form_args = [dept, number, area, title]
     error_msg = ""
+    # try was here
+
+    html = render_template('index.html', error_msg=error_msg, dept=dept,
+                           number=number, area=area, title=title)
+    response = make_response(html)
+    response.set_cookie('prev_dept', dept)
+    response.set_cookie('prev_num', number)
+    response.set_cookie('prev_area', area)
+    response.set_cookie('prev_title', title)
+    return response
+
+
+@app.route('/search_results', methods=['GET'])
+def search_results():
+    dept = request.args.get('dept')
+    number = request.args.get('number')
+    area = request.args.get('area')
+    title = request.args.get('title')
+
+    if dept is None:
+        dept = ''
+    if number is None:
+        number = ''
+    if area is None:
+        area = ''
+    if title is None:
+        title = ''
+
+    form_args = [dept, number, area, title]
+    error_msg = ""
     try:
         database = Database()
         database.connect()
@@ -39,7 +69,7 @@ def index():
     except Exception as e:
         error_msg = e
 
-    html = render_template('index.html', error_msg=error_msg, dept=dept,
+    html = render_template('searchresults.html', error_msg=error_msg, dept=dept,
                            number=number, area=area, title=title, rows=rows)
     response = make_response(html)
     response.set_cookie('prev_dept', dept)

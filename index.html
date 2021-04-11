@@ -2,6 +2,11 @@
 <html>
   <head>
     <title>Registrar's Office Class Search</title>
+    <meta name="viewport"
+           content="width=device-width, initial-scale=1">
+      
+     <link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   </head>
 
   <body>
@@ -11,8 +16,57 @@
     {% else: %}
     <h2>Class Search</h2>
     {% include 'searchform.html' %}
-    {% include 'searchresults.html' %}
+    <p id='results_paragraph'></p>
+    
     {% endif %}
     {% include 'footer.html' %}
+
+      <script src=
+      "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+      </script>
+      
+      <script>
+                  
+         'use strict';
+         function handleResponse(response)
+         {
+            $('#results_paragraph').html(response);
+         }
+         
+         let request = null;
+         
+         function searchResults()
+         {    
+            let dept = encodeURIComponent($('#dept_text').val());
+            let number = encodeURIComponent($('#number_text').val());
+            let area = encodeURIComponent($('#area_text').val());
+            let title = encodeURIComponent($('#title_text').val());
+            let url = '/search_results?dept=' + dept + '&number=' + number + '&area=' + area + '&title=' + title;
+            
+            if (request != null)
+               request.abort();
+            
+            request = $.ajax(
+               {
+                  type: 'GET',
+                  url: url,
+                  success: handleResponse
+               }
+            );
+         }
+
+         function setup()
+         {
+            $('#dept_text').focus();
+            $('#dept_text').on('input', searchResults);
+            $('#number_text').on('input', searchResults);
+            $('#area_text').on('input', searchResults);
+            $('#title_text').on('input', searchResults);
+            searchResults();
+         }
+         
+         $('document').ready(setup);
+        
+      </script>
   </body>
 </html>
