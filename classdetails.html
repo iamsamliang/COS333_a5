@@ -24,36 +24,38 @@
   {% elif not results: %}
   <p>no class with classid {{classid}} exists</p>
   {% else: %}
+  <div class="container">
+    <h2>Class Details (class id {{classid}})</h2>
+    <strong>Course Id: </strong> {{results['courseid']}} <br>
+    <strong>Days: </strong> {{results['days']}} <br>
+    <strong>Start time: </strong> {{results['start']}} <br>
+    <strong>End time: </strong> {{results['end']}} <br>
+    <strong>Building: </strong> {{results['building']}} <br>
+    <strong>Room: </strong> {{results['room']}} <br>
+  </div>
   <hr>
-  <h2>Class Details (class id {{classid}})</h2>
-  <strong>Course Id: </strong> {{results['courseid']}} <br>
-  <strong>Days: </strong> {{results['days']}} <br>
-  <strong>Start time: </strong> {{results['start']}} <br>
-  <strong>End time: </strong> {{results['end']}} <br>
-  <strong>Building: </strong> {{results['building']}} <br>
-  <strong>Room: </strong> {{results['room']}} <br>
-  <hr>
+  <div class="container">
+    <h2>Course Details (course id {{results['courseid']}})</h2>
+    {% if results['dept_num']|length == 0: %}
+    {% else: %}
+    {% for dept_num in results['dept_num']: %}
+    <strong>Dept and Number: </strong> {{dept_num}} <br>
+    {% endfor %}
+    {% endif %}
+    <strong>Area: </strong> {{results['area']}} <br>
+    <strong>Title: </strong> {{results['title']}} <br>
+    <strong>Description: </strong> {{results['desc']}} <br>
+    <strong>Prerequisites: </strong> {{results['prereq']}} <br>
+    {% if results['profs']|length == 0: %}
+    {% else: %}
+    {% for prof in results['profs']: %}
+    <strong>Professor: </strong> {{prof}} <br>
+    {% endfor %}
+    {% endif %}
+    <br/>
+    {% endif %}
+  </div>
 
-  <h2>Course Details (course id {{results['courseid']}})</h2>
-  {% if results['dept_num']|length == 0: %}
-  {% else: %}
-  {% for dept_num in results['dept_num']: %}
-  <strong>Dept and Number: </strong> {{dept_num}} <br>
-  {% endfor %}
-  {% endif %}
-  <strong>Area: </strong> {{results['area']}} <br>
-  <strong>Title: </strong> {{results['title']}} <br>
-  <strong>Description: </strong> {{results['desc']}} <br>
-  <strong>Prerequisites: </strong> {{results['prereq']}} <br>
-  {% if results['profs']|length == 0: %}
-  {% else: %}
-  {% for prof in results['profs']: %}
-  <strong>Professor: </strong> {{prof}} <br>
-  {% endfor %}
-  {% endif %}
-
-  <br/>
-  {% endif %}
   <div class="container bg-info">
     <center>
       Created by <a href="https://www.cs.princeton.edu/˜rdondero">
