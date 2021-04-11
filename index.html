@@ -38,13 +38,14 @@
       {% if error_msg: %}
       <p>{{error_msg}}</p>
       {% else: %}
-      <p id='results_paragraph'></p>
+      <div class="container">
+         <p id='results_paragraph'></p>
+      </div>
       {% endif %}
       <div class="container bg-info">
-        <center>
-          Created by <a href="https://www.cs.princeton.edu/˜rdondero">
-          Sam Liang and Sumanth Maddirala</a>.
-        </center>
+         <div class="row text-center">
+            Created by <a href="https://www.cs.princeton.edu/˜rdondero"> Sam Liang and Sumanth Maddirala</a>.
+         </div>
       </div>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
