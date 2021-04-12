@@ -57,15 +57,6 @@ def search_results():
     area = request.args.get('area')
     title = request.args.get('title')
 
-    if dept is None:
-        dept = ''
-    if number is None:
-        number = ''
-    if area is None:
-        area = ''
-    if title is None:
-        title = ''
-
     form_args = [dept, number, area, title]
     error_msg = ""
     try:

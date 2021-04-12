@@ -30,11 +30,7 @@
   </div>
   <br>
   <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <p>{{error_msg}}</p>
-      </div>
-    </div>
+    <p>{{error_msg}}</p>
   </div>
   <br>
   {% elif classid is none or classid.strip() == '': %}
@@ -43,11 +39,7 @@
   </div>
   <br>
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-sm-3">
-        <p>missing classid</p>
-      </div>
-    </div>
+      <p>missing classid</p>
   </div>
   <br>
   {% elif not is_int: %}
@@ -56,11 +48,7 @@
   </div>
   <br>
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-sm-3">
-        <p>non-integer classid</p>
-      </div>
-    </div>
+    <p>non-integer classid</p>
   </div>
   <br>
   {% elif not results: %}
@@ -69,11 +57,7 @@
   </div>
   <br>
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-sm-3">
-        <p>no class with classid {{classid}} exists</p>
-      </div>
-    </div>
+    <p>no class with classid {{classid}} exists</p>
   </div>
   <br>
   {% else: %}
@@ -113,7 +97,7 @@
 
   <div class="container bg-info">
     <div class="row text-center">
-      Created by <a href="https://www.cs.princeton.edu/˜rdondero">
+      Created by <a href="https://www.cs.princeton.edu/~rdondero">
       Sam Liang and Sumanth Maddirala</a>.
     </div>
   </div>
