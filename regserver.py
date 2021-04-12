@@ -75,6 +75,7 @@ def search_results():
         database.disconnect()
     except Exception as e:
         error_msg = e
+        rows = []
 
     html = render_template('searchresults.html', error_msg=error_msg, dept=dept,
                            number=number, area=area, title=title, rows=rows)
@@ -88,7 +89,7 @@ def search_results():
 
 @app.route('/classdetails', methods=['GET'])
 def class_details():
-    classid = request.args.get('classid').strip()
+    classid = request.args.get('classid')
     is_int = True
 
     try:
@@ -101,15 +102,6 @@ def class_details():
     prev_area = request.cookies.get('prev_area')
     prev_title = request.cookies.get('prev_title')
 
-    if prev_dept is None:
-        prev_dept = ''
-    if prev_num is None:
-        prev_num = ''
-    if prev_area is None:
-        prev_area = ''
-    if prev_title is None:
-        prev_title = ''
-
     error_msg = ""
     try:
         database = Database()
@@ -118,11 +110,10 @@ def class_details():
         database.disconnect()
     except Exception as e:
         error_msg = e
+        results = {}
 
     html = render_template('classdetails.html', error_msg=error_msg, is_int=is_int, results=results, classid=classid,
                            prev_dept=prev_dept, prev_num=prev_num, prev_area=prev_area, prev_title=prev_title)
 
-    # html = render_template('classdetails.html', results=results, classid=classid, courseid=results['courseid'], days=results['days'], start=results['start'], end=results['end'], building=results['building'],
-    #                        room=results['room'], dept_nums=results['dept_num'], area=results['area'], title=results['title'], desc=results['desc'], prereq=results['prereq'], profs=results['profs'], prev_dept=prev_dept, prev_num=prev_num, prev_area=prev_area, prev_title=prev_title)
     response = make_response(html)
     return response

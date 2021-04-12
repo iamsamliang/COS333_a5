@@ -10,24 +10,76 @@
                integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-  <title>Registrar's Office Class Details</title>
+      {% if error_msg: %}
+      <title>Registrar's Office Error</title>
+      {% elif classid is none or classid.strip() == '': %}
+      <title>Registrar's Office Error</title>
+      {% elif not is_int: %}
+      <title>Registrar's Office Error</title>
+      {% elif not results: %}
+      <title>Registrar's Office Error</title>
+      {% else %}
+      <title>Registrar's Office Class Details</title>
+      {% endif %}
 </head>
 
 <body>
-  <div class="container bg-primary">
-        <div class="row text-center">
-          <h1>Registrar's Office: Class Details</h1>
-        </div>
-  </div>
   {% if error_msg: %}
-  <p>{{error_msg}}</p>
-  {% elif classid is none or classid == '': %}
-  <p>missing classid</p>
+  <div class="container bg-primary text-center">
+    <h1>Registrar's Office: Error</h1>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <p>{{error_msg}}</p>
+      </div>
+    </div>
+  </div>
+  <br>
+  {% elif classid is none or classid.strip() == '': %}
+  <div class="container bg-primary text-center">
+    <h1>Registrar's Office: Error</h1>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-3">
+        <p>missing classid</p>
+      </div>
+    </div>
+  </div>
+  <br>
   {% elif not is_int: %}
-  <p>non-integer classid</p>
+  <div class="container bg-primary text-center">
+    <h1>Registrar's Office: Error</h1>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-3">
+        <p>non-integer classid</p>
+      </div>
+    </div>
+  </div>
+  <br>
   {% elif not results: %}
-  <p>no class with classid {{classid}} exists</p>
+  <div class="container bg-primary text-center">
+    <h1>Registrar's Office: Error</h1>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-3">
+        <p>no class with classid {{classid}} exists</p>
+      </div>
+    </div>
+  </div>
+  <br>
   {% else: %}
+  <div class="container bg-primary text-center">
+    <h1>Registrar's Office: Class Details</h1>
+  </div>
   <div class="container">
     <h2>Class Details (class id {{classid}})</h2>
     <strong>Course Id: </strong> {{results['courseid']}} <br>

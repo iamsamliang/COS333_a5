@@ -14,10 +14,9 @@
   </head>
 
    <body>
-      <div class="container bg-primary">
-         <div class="row text-center">
-            <h1>Registrar's Office: Class Search</h1>
-         </div>
+
+      <div class="container bg-primary text-center">
+         <h1>Registrar's Office: Class Search</h1>
          <div class="row justify-content-center">
             <div class="col-sm-3">
                <input type="text" class="form-control" id="department" placeholder="Department" name="dept">
@@ -34,9 +33,14 @@
          </div>
          <br>
       </div>
-
       {% if error_msg: %}
-      <p>{{error_msg}}</p>
+      <div class="container">
+         <div class="row justify-content-center">
+            <div class="col-sm-6">
+               <p>{{error_msg}}</p>
+            </div>
+         </div>
+      </div>
       {% else: %}
       <div class="container">
          <p id='results_paragraph'></p>

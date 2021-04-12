@@ -17,20 +17,10 @@ class Database():
             print(f"{argv[0]}: database reg.sqlite not found", file=stderr)
             raise Exception(
                 'A server error occurred. Please contact the system administrator.')
-        try:
-            self._connection = connect(DATABASE_NAME)
-        except Exception as e:
-            print(f'{argv[0]}: {e}', file=stderr)
-            raise Exception(
-                'A server error occurred. Please contact the system administrator.')
+        self._connection = connect(DATABASE_NAME)
 
     def disconnect(self):
-        try:
-            self._connection.close()
-        except Exception as e:
-            print(f'{argv[0]}: {e}', file=stderr)
-            raise Exception(
-                'A server error occurred. Please contact the system administrator.')
+        self._connection.close()
 
     def search(self, form_args):
         try:
@@ -110,16 +100,3 @@ class Database():
             print(f'{argv[0]}: {e}', file=stderr)
             raise Exception(
                 'A server error occurred. Please contact the system administrator.')
-
-# -----------------------------------------------------------------------
-
-# For testing:
-
-
-if __name__ == '__main__':
-    database = Database()
-    database.connect()
-    books = database.search('Kernighan')
-    for book in books:
-        print(book)
-    database.disconnect()

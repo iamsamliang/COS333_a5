@@ -1,0 +1,13 @@
+saml_sumanthm
+Assignment Number: 5
+Name: Sam Liang
+Partner Name: Sumanth Maddirala
+Assistance: none
+Sources Used: Lecture 17 and 16d handouts and lectures, assignment specifications, our own assignment 3 code, documentation on target="_blank" and column spacing in Bootstrap
+Hours spent: 16
+
+Sam contributions: Wrote the code for the table formatting in index.html and fixed the formatting for the search forms in the header for index.html. He also helped adapt the program code to properly work in mobile settings, and also covered the testing module and htmlcov file and error handling. Also led the migration of html files from assignment 3 into a single index file for assignment 5. Did all the CSS formatting and error handling, and used Bootstrap to format the html.
+
+Sumanth contributions: Adapted code from lecture to develop the script in html including adding the setup and response functions to allow for form submissions to be generated without use of a button. Also added the ids to the search forms and helped properly format them. Also created the containers for the header, the footer, and the class details texts. Also handled the target="blank" inclusion to make sure class details pop up on another window.
+
+Feedback: In this assignment, we learned about how to implement JavaScript scripts in HTML files in order to overcome lagginess. We also learned about the specifications behind rows and column spacing in Bootstrap. We also learned about object ids in JQuery and containers in Bootstrap. Overall, this assignment was helpful in learning how to implement JavaScript, JQuery, and Bootstrap in Web Programming and the Lecture 16 and 17 handouts were incredibly helpful in completing this assignment.
